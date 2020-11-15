@@ -74,6 +74,97 @@
 ~\newpage
 
 
+\section{CI/CD Pipeline Introduction}
+
+
+\subsection{What is a CI / CD pipeline?}
+
+
+A \textbf{CI / CD pipeline} represents a tool that automates the software delivery process. The pipeline execute the custom scripts in order to build the project, run tests (CI), and deploys a new version of the application (CD) if there were any fails.
+
+The main benefits from the automated pipeline are the following:
+
+
+\begin{itemize}
+	\item Remove manual errors,
+	\item Provide standardized feedback loops to developers,
+	\item Enable fast product iterations.
+\end{itemize}
+
+
+\subsection{What do CI and CD means?}
+
+
+\textbf{CI} stands from \textbf{Continuous Integration}, is a software development practice in which all the developers merge code changes in a central repository multiple times a day.
+
+Each change of the code triggers an automated built-and-test sequence for the given project and provide feedback to the developers who made the change. By default, the entire CI feedback loop run in maximum 10 minutes. But it can be adjusted if is needed.
+
+
+\textbf{CD} stands from \textbf{Continuous Delivery}, which on top of Continuous Integration adds the practice of automating the entire software release process.
+
+\textbf{Continuous Delivery} includes infrastructure provisioning and deployment, which may be manual and consist of multiple stages. All these processes are fully automated, each run is fully logged and available to the entire team.
+
+
+\subsection{Elements of a CI/CD pipeline}
+
+
+A CI/CD automate the specification of the steps that any developer needs to perform in order to deliver a new version of a software product. This automation allow the developers to be more productive and not spend time by performing them manually.
+
+The main stages through which goes the software release are \cite{ELEMENTS-CI/CD}:
+
+\begin{itemize}
+	\item \textbf{Source stage} - in the most common scenarios, the pipeline is triggered by a source code repository. A new change in the code triggers a notification (webhook) to the CI/CD tool, which runs the corresponding pipeline. Other common triggers include automatically scheduled or user-initialized workflows, or a results of other pipelines.
+
+	\item \textbf{Build stage} - consist in combining the source code and its dependencies to build a runnable instance of the project the can be shipped to the end users. The projects written in languages like Java, C/C++, or Go need to be compiled, meanwhile Ruby, Python and JavaScript projects work without this step.
+
+The cloud-native software is typically deployed with Docker, in which case the CI/CD pipeline will build the Docker container.
+
+The most common errors related to this stage indicates fundamental problem in the project's configuration, and have a high priority.
+
+	\item \textbf{Test stage} - here we run automated tests to validate our code's correctness and the behavior of our product. The test stage has the role of a safety net that prevents easily reproducible bugs from reaching the end-users.
+The responsibility of writing tests falls on the developers. The best way to write automated tests is to do in parallel with the writing the new code in TDD (Test or Behavior Driven Development).
+
+Depending of the size and complexity of the project, this phase can last from seconds to hours. Many large-scale projects run tests in multiple stages, starting with \textbf{smoke tests} that perform quick checks to \textbf{end-to-end integration tests} that test the entire system from the user's point of view. To reduce the test run time, an extensive test suite is parallelized.
+
+Failure during the test stage exposes problems in the code that developers didn't foresee when writing the code. It is important that the developers receive quick feedback at this stage, while the problem space is still fresh in their minds an they can maintain the state flow.
+
+	\item \textbf{Deploy stage} - once we have a built of a runnable instance of our code that has passed the previous stages, the project is ready to deploy. There are usually multiple deploy environments like "beta" or "staging" environment which is used internally by the product team and a "production" environment for end-users.
+
+The teams that use Agile model of development - guided by tests and real-time monitoring - usually deploy the work-in-progress manually to a staging environment for additional manual testing and review, and automatically deploy approved changes form the master branch to production.
+\end{itemize}
+
+The failure in each of the stages usually triggers a notification via email, Slack, etc, to let the responsible developer(s) to know about the causes. In case of the successful deployment in production, all team receives a notification.
+
+
+
+~\newpage
+
+
+\section{Jenkins CI/CD}
+
+
+\textbf{Jenkins} is the leading open source, free to use (MIT License) automation server that provides hundreds of plugins to support building, deploying and automating any project. 
+
+The Jenkins is written in Java and it was released in 2011 by the Kohsuke Kawaguchi. The source code is available on the GitHub Repository \url{https://github.com/jenkinsci/jenkins}.
+
+Jenkins is a server-based system that runs in servlet containers such as Apache Tomcat. Jenkins allows Continuous Integration and Continuous Delivery of project, regardless of the platform, and can handle any kind of build or Continuous Integration. Using the variety of the available plugins, Jenkins can be integrated with many testing and deployment technologies.
+
+
+The Jenkins usually will be installed on a server where the central build will take place. The following figure describe the simple Jenkins workflow.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=4cm]{images-aws/jenkins_flowchart.png}
+        \caption{Jenkins Flowchart \cite{JENKINS-FLOWCHART}}
+\end{figure}
+
+
+The hardware system requirements are: \textbf{JDK} - 1.5 or above, \textbf{Memory} - 2 GB RAM, 
+ \textbf{Disk Space} - Since all builds will be stored on the Jenkins machines, it is recommended to ensure that there is available sufficient disk space, \textbf{Operating System Version} - Jenkins can be installed on Windows, Mac OS X, Linux, FreeBSD, OpenBSD, Gentoo; \textbf{Java Container} - The WAR file can be run in any container that supports Servlet 2.4/JSP 2.0 or later, for example Tomcat 5 \cite{JENKINS-FLOWCHART}.
+
+
+~\newpage
+
 
 \section{Setup AWS EC2 Instance}
 
@@ -790,6 +881,14 @@ From the \textbf{Dashboard} we click to the project name and then build number. 
 
 \begin{thebibliography}{100}
 
+% CI / CD
+	\bibitem{ELEMENTS-CI/CD} \url{https://semaphoreci.com/blog/cicd-pipeline#:~:text=What\%20is\%20a\%20CI\%2FCD,and\%20enable\%20fast\%20product\%20iterations.}	
+
+% Jenkins
+	\bibitem{} \url{https://www.jenkins.io/}
+	\bibitem{} \url{https://www.tutorialspoint.com/jenkins/index.htm}
+	\bibitem{JENKINS-FLOWCHART} \url{https://www.tutorialspoint.com/jenkins/jenkins_overview.htm}
+	\bibitem{} \url{https://en.wikipedia.org/wiki/Jenkins_(software)}
 
 % Go Jenkins
 	\bibitem{} \url{https://bmuschko.com/blog/go-on-jenkins/#:~:text=Jenkins}
