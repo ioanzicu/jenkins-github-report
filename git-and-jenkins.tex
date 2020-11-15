@@ -169,6 +169,16 @@ The hardware system requirements are: \textbf{JDK} - 1.5 or above, \textbf{Memor
 \section{Setup AWS EC2 Instance}
 
 
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/aws-jenkins.png}
+        \caption{AWS Jenkins Build Server Reference Architecture \cite{JENKINS-BUILD-SERVER}}
+\end{figure}
+
+
+
 \subsection{Create a Security Group for Amazon EC2 Instance}
 
 
@@ -875,8 +885,14 @@ From the \textbf{Dashboard} we click to the project name and then build number. 
 
 \section{Conclusions}
 
+Jenkins is a powerful open-source tool that allows CI/CD integration for better and faster software development life-cycle. It has a variety of plugins and many ways to customize the built environment. The Jenkins jobs can be easily configured and triggered by specific events. 
+
+The integration of Jenkins with GitHub allows us to trigger the build at each Push or Pull Request, ensuring that the new feature or modification of the existing code runs properly and passes all the tests. 
+
+In case if the build fails, then the developer(s) receive feedback about the causes. By doing so the final product is cleaned from the bugs and we can be sure that it will not encounter unexpected errors in the production deployment.
 
 
+~\newpage
 
 
 \begin{thebibliography}{100}
@@ -890,6 +906,10 @@ From the \textbf{Dashboard} we click to the project name and then build number. 
 	\bibitem{JENKINS-FLOWCHART} \url{https://www.tutorialspoint.com/jenkins/jenkins_overview.htm}
 	\bibitem{} \url{https://en.wikipedia.org/wiki/Jenkins_(software)}
 
+% AWS
+	\bibitem{} \url{chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://d1.awsstatic.com/Projects/P5505030/aws-project_Jenkins-build-server.pdf}
+	\bibitem{JENKINS-BUILD-SERVER} \url{https://aws.amazon.com/getting-started/hands-on/setup-jenkins-build-server/}
+
 % Go Jenkins
 	\bibitem{} \url{https://bmuschko.com/blog/go-on-jenkins/#:~:text=Jenkins}
 
@@ -898,7 +918,6 @@ From the \textbf{Dashboard} we click to the project name and then build number. 
 
 
 	\bibitem{} \url{https://www.blazemeter.com/blog/how-to-integrate-your-github-repository-to-your-jenkins-project}
-
 
 
 \end{thebibliography}
