@@ -80,7 +80,7 @@
 \subsection{What is a CI / CD pipeline?}
 
 
-A \textbf{CI / CD pipeline} represents a tool that automates the software delivery process. The pipeline execute the custom scripts in order to build the project, run tests (CI), and deploys a new version of the application (CD) if there were any fails.
+A \textbf{CI / CD pipeline} represents a tool that automates the software delivery process. The pipeline execute the custom scripts in order to build the project, run tests (CI), and deploys a new version of the application (CD) if there were not any fails.
 
 The main benefits from the automated pipeline are the following:
 
@@ -883,6 +883,143 @@ From the \textbf{Dashboard} we click to the project name and then build number. 
 
 
 
+
+
+\subsection{Setup Email Notification at each Build}
+
+
+In this subsection we will describe how we configured the Jenkins to get the email notifications for every build status neither is a fail or success.
+
+
+First step is to setup the \textbf{E-mail Notification}, for this we go to \textbf{Manage Jenkins} - \textbf{Configure System} and scroll down to the \textbf{E-mail Notification} subsection.
+
+
+We set the \textbf{SMTP server} to \textbf{smtp.gmail.com} and click on the \textbf{Advanced} button.
+
+
+The the \textbf{Advanced} menu, we:
+
+
+\begin{itemize}
+	\item  select the option \textbf{Use SMTP Authentication},
+	\item \textbf{User Name} - add the Gmail that we created specifically for this purpose,
+	\item \textbf{Password} - enter the password to the email from the previous field,
+	\item  select the option \textbf{Use SSL},
+	\item \textbf{SMPT Port} - set to \textbf{465},
+	\item \textbf{Reply to Address} - we enter again the same email from the \textbf{User Name} field.
+\end{itemize}
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/51-email-settings.png}
+        \caption{Email Notification Configurations}
+\end{figure}
+
+
+Next, we have the option to test the configurations that we setup. But because of the Gmail security policy, we will receive the following error message: \textbf{403 No valid crumb was included in the request.}
+
+
+This Issue is well known in the Jenkins community, so in order to solve it we have to configure \textbf{Compatibility mode for proxy}. 
+
+
+From the Jenkins home page we go in \textbf{Configure Global Security} settings, scroll to the \textbf{CSRF Protection} subsection and enable the option \textbf{Enable proxy compatibility}. The we click on the \textbf{Save} button and go back to the \textbf{Email Notification} settings.
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/52-enable-proxy-compatibility.png}
+        \caption{Enable proxy compatibility}
+\end{figure}
+
+
+Now we click the \textbf{Test Configuration} button and make sure that the email was sent successfully. Then we click \textbf{Save} button and go back to the Jenkins home page.
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/53-email-test-configuration.png}
+        \caption{Test the Configurations for Email Notification}
+\end{figure}
+
+
+Here we can see the received test email sent from Jenkins.
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/54-email-test-confirmation.png}
+        \caption{Received Test Email}
+\end{figure}
+
+
+Now we select \textbf{RouteFinderApp} Job, open the \textbf{Configure} menu, click on tab \textbf{Build} and from the \textbf{Add post-buidl actions} select \textbf{E-mail Notifications}
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/55-email-notification-buil-setting.png}
+        \caption{Select E-mail Notification from Add post-build actions dropdown}
+\end{figure}
+
+
+In the new window we enter in the \textbf{Recipients} field the list of emails separated by whitespace. and enable the options \textbf{Send e-mail for every unstable build} and \textbf{Send separate e-mails to individuals who broke the build}.
+The recipients will receive email notification at each build.
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/56-email-notification-post-build-action.png}
+        \caption{Add Recipients for Post-build Actions}
+\end{figure}
+
+
+
+
+~\newpage
+
+
+\subsection{Test Email Notification}
+
+
+To test the email notification we trigger a build and open the \textbf{Console Output} window. From the logs, at the end of the logs we can see the log for sending email to the list of recipients that we have configured in the previous section.
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/57-email-notification-trigger-build.png}
+        \caption{Logs from the Job Build}
+\end{figure}
+
+
+Then we open the Gmail and check for notification email from Jenkins. 
+In the figure below we can see the notification email looks. It contains a link to the Jenkins build.
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/58-gmail-notification-received-full.png}
+        \caption{Received Notification Email from Jenkins}
+\end{figure}
+
+
+By clicking on the provided URL link in the email, we open specific build webpage in the Jenkins.
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=15cm]{images-aws/59-gmail-notification-link-open.png}
+        \caption{The Jenkins Build Page that we found in the Email Notification}
+\end{figure}
+
+
+
+
+
+
+~\newpage
+
+
 \section{Conclusions}
 
 Jenkins is a powerful open-source tool that allows CI/CD integration for better and faster software development life-cycle. It has a variety of plugins and many ways to customize the built environment. The Jenkins jobs can be easily configured and triggered by specific events. 
@@ -919,6 +1056,8 @@ In case if the build fails, then the developer(s) receive feedback about the cau
 
 	\bibitem{} \url{https://www.blazemeter.com/blog/how-to-integrate-your-github-repository-to-your-jenkins-project}
 
+% Email Build Notification
+	\bibitem{} \url{https://medium.com/@arun.dev/get-email-notification-for-jenkins-build-failure-and-success-d59154dc639a}
 
 \end{thebibliography}
 
