@@ -47,7 +47,7 @@
        \vspace{1.5cm}
 
 
-       \mbox{}\hfill \textbf{Lecture:}  dr inż. Paweł Świtała
+       \mbox{}\hfill \textbf{Lecturer:}  dr inż. Paweł Świtała
 
        {\raggedleft \textbf{Students:} Roman Tymochko, \par}
        {\raggedleft Dmitri Cerevatov,       \par}
@@ -95,12 +95,12 @@ The main benefits from the automated pipeline are the following:
 \subsection{What do CI and CD means?}
 
 
-\textbf{CI} stands from \textbf{Continuous Integration}, is a software development practice in which all the developers merge code changes in a central repository multiple times a day.
+\textbf{CI} stands for \textbf{Continuous Integration}, is a software development practice in which all developers merge code changes in a central repository multiple times a day.
 
-Each change of the code triggers an automated built-and-test sequence for the given project and provide feedback to the developers who made the change. By default, the entire CI feedback loop run in maximum 10 minutes. But it can be adjusted if is needed.
+Each change of the code triggers an automated build-and-test sequence for the given project and provide feedback to the developer who made the change. By default, the entire CI feedback loop run in maximum 10 minutes. But it can be adjusted if is needed.
 
 
-\textbf{CD} stands from \textbf{Continuous Delivery}, which on top of Continuous Integration adds the practice of automating the entire software release process.
+\textbf{CD} stands for \textbf{Continuous Delivery}, which on top of Continuous Integration adds the practice of automating the entire software release process.
 
 \textbf{Continuous Delivery} includes infrastructure provisioning and deployment, which may be manual and consist of multiple stages. All these processes are fully automated, each run is fully logged and available to the entire team.
 
@@ -108,7 +108,7 @@ Each change of the code triggers an automated built-and-test sequence for the gi
 \subsection{Elements of a CI/CD pipeline}
 
 
-A CI/CD automate the specification of the steps that any developer needs to perform in order to deliver a new version of a software product. This automation allow the developers to be more productive and not spend time by performing them manually.
+A CI/CD automate the specification of the steps that any developer needs to perform in order to deliver a new version of a software product. This automation allow developers to be more productive and not spend time by performing them manually.
 
 The main stages through which goes the software release are \cite{ELEMENTS-CI/CD}:
 
@@ -126,9 +126,9 @@ The responsibility of writing tests falls on the developers. The best way to wri
 
 Depending of the size and complexity of the project, this phase can last from seconds to hours. Many large-scale projects run tests in multiple stages, starting with \textbf{smoke tests} that perform quick checks to \textbf{end-to-end integration tests} that test the entire system from the user's point of view. To reduce the test run time, an extensive test suite is parallelized.
 
-Failure during the test stage exposes problems in the code that developers didn't foresee when writing the code. It is important that the developers receive quick feedback at this stage, while the problem space is still fresh in their minds an they can maintain the state flow.
+Failure during the test stage exposes problems in the code that developers didn't foresee when writing the code. It is important that developers receive quick feedback at this stage, while the problem space is still fresh in their minds an they can maintain the state flow.
 
-	\item \textbf{Deploy stage} - once we have a built of a runnable instance of our code that has passed the previous stages, the project is ready to deploy. There are usually multiple deploy environments like "beta" or "staging" environment which is used internally by the product team and a "production" environment for end-users.
+	\item \textbf{Deploy stage} - once we have a build of a runnable instance of our code that has passed the previous stages, the project is ready to deploy. There are usually multiple deploy environments like "beta" or "staging" environment which is used internally by the product team and a "production" environment for end-users.
 
 The teams that use Agile model of development - guided by tests and real-time monitoring - usually deploy the work-in-progress manually to a staging environment for additional manual testing and review, and automatically deploy approved changes form the master branch to production.
 \end{itemize}
@@ -253,7 +253,7 @@ We will create a security group and add the following rules:
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/2-inbound-rules.png}
-        \caption{Setup rules for the inbound traffic}
+        \caption{Setup rules for inbound traffic}
 \end{figure}
 
 
@@ -278,7 +278,7 @@ We will create a security group and add the following rules:
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/4-instances.png}
-        \caption{Navigate to the Instances Menu}
+        \caption{Navigate to Instances Menu}
 \end{figure}
 
 
@@ -406,7 +406,7 @@ ec2-user@ec2-52-12-213-243.us-west-2.compute.amazonaws.com
 \subsection{Download and Install Jenkins}
 
 
-1. We first ensure that the software packages are up to date.
+1. We first ensure that software packages are up to date.
 
 
 \begin{verbatim}
@@ -421,7 +421,7 @@ sudo yum update -y
 \end{figure}
 
 
-2. The Jenkins will require Java JDK, so we install it on the EC2 instance.
+2. Jenkins will require Java JDK, so we install it on the EC2 instance.
 
 
 \begin{verbatim}
@@ -436,7 +436,7 @@ sudo yum install java-1.8.0-openjdk
 \end{figure}
 
 
-3. We add the Jenkins repository using the following command:
+3. We add Jenkins repository using the following command:
 
 
 \begin{verbatim}
@@ -449,7 +449,7 @@ ci.org/redhat/jenkins.repo
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/16-download-jenkins.png}
-        \caption{Add the Jenkins repository}
+        \caption{Add Jenkins repository}
 \end{figure}
 
 
@@ -495,7 +495,7 @@ sudo service jenkins start
 \begin{figure}[H]
     \centering
         \includegraphics[width=11cm]{images-aws/19-start-jenkins.png}
-        \caption{Start the Jenkins Service}
+        \caption{Start Jenkins Service}
 \end{figure}
 
 
@@ -595,28 +595,28 @@ At this moment we have completed the Jenkins setup.
 ~\newpage
 
 
-\section{Setup the Jenkins Job for Our Project}
+\section{Setup a Jenkins Job for Our Project}
 
 
-In Jenkins, the software project are built in the separate Jobs. 
-But before proceeding to the creating of the Jenkins Job, we have to install some prerequisites. 
+In Jenkins, the software projects are built in the separate Jobs. 
+But before proceeding to the creating of a Jenkins Job, we have to install some prerequisites. 
 
 
 \begin{itemize}
-	\item First we have to install the \textbf{Git} on the EC2, to allow to get the project's files from the GitHub repository.
+	\item First we have to install \textbf{Git} on the EC2, to allow to get the project's files from the GitHub repository.
 
 	\item Second is specific for this concrete project, we need to have Golang programming language for the build environment, so we will install the \textbf{Go Plugin}. In different project it can be required different programming languages like Java, Python, C\#, etc, so this is depending of the specific project.
 \end{itemize}
 
 
-\subsection{Install the Git on EC2}
+\subsection{Install Git on EC2}
 
 
 We want to setup the \textbf{Source Code Repository} to have access to the project code. So we enter the \textbf{Repository URL}.
-At this moment, we receive error because we don't have installed the \textbf{Git} on our  Amazon Linux EC2 Instance.
+At this moment, we receive error because we haven't installed \textbf{Git} on our  Amazon Linux EC2 Instance.
 
 
-In the bash shell that is connected to the EC2 instance to install the \textbf{git} we enter the following command:
+In the bash shell that is connected to the EC2 instance to install \textbf{git} we enter the following command:
 
 
 \begin{verbatim}
@@ -631,7 +631,7 @@ sudo yum install git -y
 \end{figure}
 
 
-To setup the git executable file into the Jenkins Configuration Menu we identify it's location with the \textbf{which} command.
+To setup git executable file into the Jenkins Configuration Menu we identify it's location with \textbf{which} command.
 
 
 \begin{verbatim}
@@ -646,13 +646,13 @@ which git
 \end{figure}
 
 
-After installation of the \textbf{Git} on the EC2 instance we go to \textbf{Dashboard} -> \textbf{Global Tool Configuration}, scroll to the \textbf{Git} section and paste the path in the \textbf{Path to Git executable} field and we click \textbf{Save} button.
+After installation of \textbf{Git} on the EC2 instance we go to \textbf{Dashboard} -> \textbf{Global Tool Configuration}, scroll to \textbf{Git} section and paste the path in the \textbf{Path to Git executable} field and we click \textbf{Save} button.
 
 
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/29-jenkins-git-set-path.png}
-        \caption{Setup the Git path to the  executable}
+        \caption{Setup Git path to the executable}
 \end{figure}
 
 
@@ -660,7 +660,7 @@ After installation of the \textbf{Git} on the EC2 instance we go to \textbf{Dash
 ~\newpage
 
 
-\subsection{Setup the Go Plugin for the Build Environment}
+\subsection{Setup Go Plugin for Build Environment}
 
 
 Because our project is written in Go and requires Golang Environment, we install the \textbf{Go} plugin, that will help us in setting up the language version for the specific build.
@@ -671,7 +671,7 @@ We navigate into \textbf{Dashboard} - \textbf{Plugin Manager} and search for the
 \begin{figure}[h!]
     \centering
         \includegraphics[width=15cm]{images-aws/30-go-plugin.png}
-        \caption{Setup Plugin for the Golang Programming Language}
+        \caption{Setup Plugin for Golang Programming Language}
 \end{figure}
 
 
@@ -703,7 +703,7 @@ In order to create a Job for our project we click on
 \end{figure}
 
 
-Next, we enter the item name for the project \textbf{RouteFinderApp} and select the option \textbf{Freestyle project} option and click \textbf{OK}.
+Next, we enter the item name for the project \textbf{RouteFinderApp} and select the \textbf{Freestyle project} option and click \textbf{OK}.
 
 
 \begin{figure}[H]
@@ -723,7 +723,7 @@ In the \textbf{Source Code Management} tab, we select \textbf{Git} and insert th
 \end{figure}
 
 
-In the \textbf{Build Triggers} menu, in the \textbf{React build Action} dropdown, we select and click on the \textbf{Execute shell}.
+In the \textbf{Build Triggers} menu, in the \textbf{React build Action} dropdown, we select and click on \textbf{Execute shell}.
 
 
 \begin{figure}[H]
@@ -733,15 +733,15 @@ In the \textbf{Build Triggers} menu, in the \textbf{React build Action} dropdown
 \end{figure}
 
 
-In the \textbf{Build Environment} tab, we select \textbf{Set up Go programming language tools}, then select \textbf{Go version} that we have setup before (1.15).
-In the \textbf{Build} subsection, we write the commands for the \textbf{Executive shell}, mainly to:
+In \textbf{Build Environment} tab, we select \textbf{Set up Go programming language tools}, then select \textbf{Go version} that we have setup before (1.15).
+In \textbf{Build} subsection, we write commands for the \textbf{Executive shell}, mainly to:
 
 
 \begin{itemize}
-	\item Enable the Environment Variables for Golang, 
-	\item Download the Project Dependencies,
+	\item Enable Environment Variables for Golang, 
+	\item Download Project Dependencies,
 	\item Build the Project,
-	\item Run the Unit Tests.
+	\item Run Unit Tests.
 \end{itemize}
 
 
@@ -751,7 +751,7 @@ Then we click \textbf{Save} button.
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/36-project-build-env-golang-.png}
-        \caption{Setup the Script for Build Environment}
+        \caption{Setup Script for Build Environment}
 \end{figure}
 
 
@@ -775,7 +775,7 @@ In left-hand side bar, we click on \textbf{Build Now} to manually test if the pr
 \end{figure}
 
 
-In the \textbf{Dashboard} page, we see the \textbf{RouteFinderApp} job listed with the information about the Last Success, Last Fail and Duration of the Last build.
+On \textbf{Dashboard} page, we see the \textbf{RouteFinderApp} job listed with the information about the Last Success, Last Fail and Duration of the Last build.
 
 
 \begin{figure}[H]
@@ -789,15 +789,15 @@ In the \textbf{Dashboard} page, we see the \textbf{RouteFinderApp} job listed wi
 ~\newpage
 
 
-\subsection{Setup the webhook on the GitHub repository}
+\subsection{Setup webhook on the GitHub repository}
 
 
-In this chapter, we want to setup the webhook in the GitHub repository in order to automatically trigger the Jenkins Job Build at each \textbf{Push} and \textbf{Pull Request} event. 
+In this chapter, we want to setup a webhook in the GitHub repository in order to automatically trigger Jenkins Job Build at each \textbf{Push} and \textbf{Pull Request} event. 
 
-This is a very most common scenario of the integration of Jenkins with GitHub in the Software Development Life-cycle.
+This is a most common scenario of the integration of Jenkins with GitHub in the Software Development Life-cycle.
 
 
-In the GitHub repository page, we click on the \textbf{Settings} button.
+On GitHub repository page, we click on the \textbf{Settings} button.
 
 
 \begin{figure}[H]
@@ -807,26 +807,26 @@ In the GitHub repository page, we click on the \textbf{Settings} button.
 \end{figure}
 
 
-From the left-hand side bar, we click on \textbf{Webhooks}. We can see that on this repository there is already one webook. In the right hand-side, we click on the \textbf{Add webhook} button.
+From the left-hand side bar, we click on \textbf{Webhooks}. We can see that on this repository there is already one webook. In the right hand-side, we click on \textbf{Add webhook} button.
 
 
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/41-web-hook.png}
-        \caption{Check the Webhooks}
+        \caption{Check Webhooks}
 \end{figure}
 
 
-In the \textbf{Webhooks / Add webhook} subpage we paste the \textbf{Payload URL}  with port 8080 at the end, which in fact is the URL to the Jenkins located in the EC2 instance.
+On \textbf{Webhooks / Add webhook} subpage we paste the \textbf{Payload URL}  with port 8080 at the end, which in fact is the URL to the Jenkins located in the EC2 instance.
 
 
-The \textbf{Content Type} is \textbf{application/json} and we specify that we want to \textbf{Select individual events}.
+\textbf{Content Type} is \textbf{application/json} and we specify that we want to \textbf{Select individual events}.
 
 
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/42-web-hook-setup.png}
-        \caption{Add new Webhook to trigger the Jenkins Build}
+        \caption{Add new Webhook to trigger Jenkins Build}
 \end{figure}
 
 
@@ -836,7 +836,7 @@ From the list of events, we select \textbf{Pull request} and \textbf{Pushes}.
 \begin{figure}[H]
     \centering
         \includegraphics[width=13cm]{images-aws/43-web-hook-setup-pull.png}
-        \caption{Trigger the Jenkins Build on Push and Pull Request}
+        \caption{Trigger Jenkins Build on Push and Pull Request}
 \end{figure}
 
  We check the \textbf{Active} checkbox at the bottom of the page. Then we click on \textbf{Add webhook}.
@@ -858,13 +858,13 @@ We have successfully created a new Webhook. But we can see that there is a black
 \end{figure}
 
 
-Next, we have to edit the Configuration for our project build on Jenkins. In the \textbf{Dashboard} we select the \textbf{RouteFinderApp} project, then on the left hand-side click on \textbf{Configure}, select \textbf{Build Triggers} tab and check the option \textbf{GitHub hook trigger for GITScm polling}. After we click \textbf{Save} button.
+Next, we have to edit Configuration for our project build on Jenkins. In the \textbf{Dashboard} we select the \textbf{RouteFinderApp} project, then on the left hand-side click on \textbf{Configure}, select \textbf{Build Triggers} tab and check option \textbf{GitHub hook trigger for GITScm polling}. After we click \textbf{Save} button.
 
 
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/46-trigger-jenkins.png}
-        \caption{Setup the Github hook trigger for GITScm polling}
+        \caption{Setup Github hook trigger for GITScm polling}
 \end{figure}
 
 
@@ -876,7 +876,7 @@ Next, we have to edit the Configuration for our project build on Jenkins. In the
 \subsection{Test the GitHub Webhook}
 
 
-From the \textbf{VSCode}, where we have the project open, we push a new commit to GitHub in order to test the Webhook.
+From \textbf{VSCode}, where we have the project open, we push a new commit to GitHub in order to test the Webhook.
 
 
 \begin{figure}[H]
@@ -906,7 +906,7 @@ In the Jenkins \textbf{Dashboard} we see that the \textbf{Last Success} build wa
 \end{figure}
 
 
-From the \textbf{Dashboard} we click to the project name and then build number. We can see that the build passed and it was triggered by our \textbf{Push} event.
+From \textbf{Dashboard} we click to the project name and then build number. We can see that the build passed and it was triggered by our \textbf{Push} event.
 
 \begin{figure}[H]
     \centering
@@ -921,23 +921,23 @@ From the \textbf{Dashboard} we click to the project name and then build number. 
 \subsection{Setup Email Notification at each Build}
 
 
-In this subsection we will describe how we configured the Jenkins to get the email notifications for every build status neither is a fail or success.
+In this subsection we will describe how we configured Jenkins to get email notifications for both fail and success build statuses.
 
 
-First step is to setup the \textbf{E-mail Notification}, for this we go to \textbf{Manage Jenkins} - \textbf{Configure System} and scroll down to the \textbf{E-mail Notification} subsection.
+First step is to setup \textbf{E-mail Notifications}, for this we go to \textbf{Manage Jenkins} - \textbf{Configure System} and scroll down to \textbf{E-mail Notification} subsection.
 
 
-We set the \textbf{SMTP server} to \textbf{smtp.gmail.com} and click on the \textbf{Advanced} button.
+We set \textbf{SMTP server} to \textbf{smtp.gmail.com} and click on \textbf{Advanced} button.
 
 
-The the \textbf{Advanced} menu, we:
+The \textbf{Advanced} menu, we:
 
 
 \begin{itemize}
-	\item  select the option \textbf{Use SMTP Authentication},
-	\item \textbf{User Name} - add the Gmail that we created specifically for this purpose,
-	\item \textbf{Password} - enter the password to the email from the previous field,
-	\item  select the option \textbf{Use SSL},
+	\item  select option \textbf{Use SMTP Authentication},
+	\item \textbf{User Name} - add Gmail that we created specifically for this purpose,
+	\item \textbf{Password} - enter password of Gmail from previous field,
+	\item  select option \textbf{Use SSL},
 	\item \textbf{SMPT Port} - set to \textbf{465},
 	\item \textbf{Reply to Address} - we enter again the same email from the \textbf{User Name} field.
 \end{itemize}
@@ -950,13 +950,13 @@ The the \textbf{Advanced} menu, we:
 \end{figure}
 
 
-Next, we have the option to test the configurations that we setup. But because of the Gmail security policy, we will receive the following error message: \textbf{403 No valid crumb was included in the request.}
+Next, we have an option to test the configurations that we setup. But because of the Gmail security policy, we will receive the following error message: \textbf{403 No valid crumb was included in the request.}
 
 
-This Issue is well known in the Jenkins community, so in order to solve it we have to configure \textbf{Compatibility mode for proxy}. 
+This Issue is well known in Jenkins community, so in order to solve it we have to configure \textbf{Compatibility mode for proxy}. 
 
 
-From the Jenkins home page we go in \textbf{Configure Global Security} settings, scroll to the \textbf{CSRF Protection} subsection and enable the option \textbf{Enable proxy compatibility}. The we click on the \textbf{Save} button and go back to the \textbf{Email Notification} settings.
+From Jenkins home page we go to \textbf{Configure Global Security} settings, scroll to \textbf{CSRF Protection} subsection and enable option \textbf{Enable proxy compatibility}. The we click on \textbf{Save} button and go back to \textbf{Email Notification} settings.
 
 
 \begin{figure}[H]
@@ -966,17 +966,17 @@ From the Jenkins home page we go in \textbf{Configure Global Security} settings,
 \end{figure}
 
 
-Now we click the \textbf{Test Configuration} button and make sure that the email was sent successfully. Then we click \textbf{Save} button and go back to the Jenkins home page.
+Now we click the \textbf{Test Configuration} button and make sure that an email was sent successfully. Then we click \textbf{Save} button and go back to Jenkins home page.
 
 
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/53-email-test-configuration.png}
-        \caption{Test the Configurations for Email Notification}
+        \caption{Test Configurations for Email Notification}
 \end{figure}
 
 
-Here we can see the received test email sent from Jenkins.
+Here we can see received test email sent from Jenkins.
 
 
 \begin{figure}[H]
@@ -986,7 +986,7 @@ Here we can see the received test email sent from Jenkins.
 \end{figure}
 
 
-Now we select \textbf{RouteFinderApp} Job, open the \textbf{Configure} menu, click on tab \textbf{Build} and from the \textbf{Add post-buidl actions} select \textbf{E-mail Notifications}
+Now we select \textbf{RouteFinderApp} Job, open \textbf{Configure} menu, click on tab \textbf{Build} and from the \textbf{Add post-buidl actions} select \textbf{E-mail Notifications}
 
 
 \begin{figure}[H]
@@ -996,7 +996,7 @@ Now we select \textbf{RouteFinderApp} Job, open the \textbf{Configure} menu, cli
 \end{figure}
 
 
-In the new window we enter in the \textbf{Recipients} field the list of emails separated by whitespace. and enable the options \textbf{Send e-mail for every unstable build} and \textbf{Send separate e-mails to individuals who broke the build}.
+In a new window we enter in \textbf{Recipients} field the list of emails separated by whitespace. and enable options \textbf{Send e-mail for every unstable build} and \textbf{Send separate e-mails to individuals who broke the build}.
 The recipients will receive email notification at each build.
 
 
@@ -1015,7 +1015,7 @@ The recipients will receive email notification at each build.
 \subsection{Test Email Notification}
 
 
-To test the email notification we trigger a build and open the \textbf{Console Output} window. From the logs, at the end of the logs we can see the log for sending email to the list of recipients that we have configured in the previous section.
+To test email notifications we trigger a build and open \textbf{Console Output} window. From the logs we can see the record for sending email to the list of recipients that we have configured in the previous section.
 
 
 \begin{figure}[H]
@@ -1026,7 +1026,7 @@ To test the email notification we trigger a build and open the \textbf{Console O
 
 
 Then we open the Gmail and check for notification email from Jenkins. 
-In the figure below we can see the notification email looks. It contains a link to the Jenkins build.
+In the figure below we can see how notification email looks. It contains a link to the Jenkins build.
 
 
 \begin{figure}[H]
@@ -1036,13 +1036,13 @@ In the figure below we can see the notification email looks. It contains a link 
 \end{figure}
 
 
-By clicking on the provided URL link in the email, we open specific build webpage in the Jenkins.
+By clicking on provided URL link in the email, we open specific build webpage in the Jenkins.
 
 
 \begin{figure}[H]
     \centering
         \includegraphics[width=15cm]{images-aws/59-gmail-notification-link-open.png}
-        \caption{The Jenkins Build Page that we found in the Email Notification}
+        \caption{Jenkins Build Page that we found in the Email Notification}
 \end{figure}
 
 
@@ -1055,17 +1055,11 @@ By clicking on the provided URL link in the email, we open specific build webpag
 
 \section{Conclusions}
 
-Jenkins is a powerful open-source tool that allows CI/CD integration for better and faster software development life-cycle. It has a variety of plugins and many ways to customize the built environment. The Jenkins jobs can be easily configured and triggered by specific events. 
+Jenkins is a powerful open-source tool that allows CI/CD integration for better and faster software development life-cycle. It has a variety of plugins and many ways to customize the build environment. Jenkins jobs can be easily configured and triggered by specific events. 
 
-The integration of Jenkins with GitHub allows us to trigger the build at each Push or Pull Request, ensuring that the new feature or modification of the existing code runs properly and passes all the tests. 
+Integration of Jenkins with GitHub allows us to trigger build at each Push or Pull Request, ensuring that a new feature or modification of the existing code runs properly and passes all the tests. 
 
-
-In case if the build fails, then the developer(s) receive feedback about the causes. By doing so the final product is cleaned from the bugs and we can be sure that it will not encounter unexpected errors in the production deployment.
-
-
-
-
-
+In case if build fails, then developers receive feedback about the causes. By doing so the final product is cleaned from the bugs and we can be sure that it will not encounter unexpected errors in production deployment.
 
 
 ~\newpage

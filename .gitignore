@@ -4,3 +4,8 @@
 /git-and-jenkins.pdf
 /git-and-jenkins.synctex.gz
 /aws-project_Jenkins-build-server.pdf
+
+*.pdf
+*.aux
+*.out
+*.toc
