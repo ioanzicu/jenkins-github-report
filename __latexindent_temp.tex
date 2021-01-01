@@ -1047,111 +1047,10 @@ By clicking on provided URL link in the email, we open specific build webpage in
 
 
 
+
+
+
 ~\newpage
-
-\subsection{Deploy to Heroku}
-
-
-In this subsection, we will set up the Heroku PaaS service for deploying our application after the build succeed. First, we need to generate an SSH private/public key with the following commands:
-
-\begin{itemize}
-
-	\item \textbf{ssh-keygen -t ed25519 -C "ioan.zicu94@gmail.com"} - generate SSH keys
-
-	\item \textbf{ssh-add ~/.ssh/id\_ed25519} - add generated SSH to the authorized SSH keys
-
-	\item \textbf{cat id\_ed25519.pub} - display public SSH key (for GitHub)
-
-	\item \textbf{cat id\_ed25519} - display private SSH key (for Jenkins)
-
-\end{itemize}
-
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=11cm]{images-git-heroku/generate-ssh-keys.png}
-        \caption{Generate a SSH private/public key}
-\end{figure}
-
-
-
-The public SSH key, we add in the \textbf{Settings} - \textbf{SSH and GPG} section.
-
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=14cm]{images-git-heroku/add-public-key-github.png}
-        \caption{Setup the Public SSH Key into GitHub Settings}
-\end{figure}
-
-
-Next, we extend the project configurations and add the \textbf{Source Code Management} subsection for the Git repository. Here we enter the repository URL and credentials with the private SSH earlier generated private key.
-
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=15cm]{images-git-heroku/add-private-key-jenkins.png}
-        \caption{Setup Source Code Management URL and Credentials with Private SSH Key}
-\end{figure}
-
-
-In the Post-build Action subsection, we configure the Git Publisher, which will trigger a deployment to the Heroku server only if the build succeeds. In the Branches fields, we specify that we want to push from the Heroku branch to the target remote name origin (specified in the documentation).
-
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=15cm]{images-git-heroku/add-post-build-action-deployment.png}
-        \caption{Setup Post-Build Actions to push to the Heroku just if the build Succeeds}
-\end{figure}
-
-
-Having Source Code management and Git Publisher post-build action configured, we click the \textbf{Save} button and move on.
-
-
-Now, we have to create the application on Heroku PaaS Service. The process is easy and straightforward, we enter the name and next we connect the Heroku application to the GitHub repository for the specific branch to automate the deployment process.
-
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=15cm]{images-git-heroku/create-heroku-app.png}
-        \caption{Creating a new heroku application}
-\end{figure}
-
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=15cm]{images-git-heroku/connect-heroku-github.png}
-        \caption{Connecting Heroku application with GitHub repository}
-\end{figure}
-
-
-In the following Figure, you can see the logs we have obtained after testing the automated deployment of the application to the Heroku server. After the unit tests have passed, the post-build action started and using the provided credentials with our SSH key, Jenkins pushes the GitHub to commit to Heroku, and because during the testing process, we encountered many errors, the build is still unstable and the email list that we have provided is notified about this new push.
-
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=15cm]{images-git-heroku/jenkins-test-logs.png}
-        \caption{Jenkins Logs after Testing automated deployment to Heroku}
-\end{figure}
-
-
-Here we can see the application overview on Heroku after our testing push. Note that the green color message \textbf{Build succeeded} proof that the application was successfully built and deployed. 
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=15cm]{images-git-heroku/heroku-app-overview.png}
-        \caption{Heroku application overview}
-\end{figure}
-
-
-The repository of the project is available on \url{https://github.com/ioanzicu/go-route-finder}, and the running application on Heroku on \url{https://go-route-finder-jenkins.herokuapp.com/}.
-
-
-\begin{figure}[H]
-    \centering
-        \includegraphics[width=12cm]{images-git-heroku/deployed-app.png}
-        \caption{Our application is live and running}
-\end{figure}
 
 
 \section{Conclusions}
@@ -1163,7 +1062,7 @@ Integration of Jenkins with GitHub allows us to trigger build at each Push or Pu
 In case if build fails, then developers receive feedback about the causes. By doing so the final product is cleaned from the bugs and we can be sure that it will not encounter unexpected errors in production deployment.
 
 
-
+~\newpage
 
 
 \begin{thebibliography}{100}
