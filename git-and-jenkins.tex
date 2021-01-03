@@ -1052,7 +1052,11 @@ By clicking on provided URL link in the email, we open specific build webpage in
 \subsection{Deploy to Heroku}
 
 
-In this subsection, we will set up the Heroku PaaS service for deploying our application after the build succeed. First, we need to generate an SSH private/public key with the following commands:
+In this subsection, we will set up the Heroku PaaS service for deploying our application after the build succeed. 
+\textbf{Heroku} is a container-based cloud Platform as a Service (PaaS). It allows developers to deploy, manage, and scale modern applications. Heroku platform is flexible and easy to use. Heroku supports many programming languages like Java, Node.js, Scala, Clojure, Ruby, Python, PHP, and Go. Heroku was founded in 2007, it is owned at the moment by Salesforce.com and it runs on top of AWS IaaS Service.
+
+
+First, we need to generate an SSH private/public key with the following commands:
 
 \begin{itemize}
 
@@ -1130,7 +1134,7 @@ In the following Figure, you can see the logs we have obtained after testing the
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=15cm]{images-git-heroku/jenkins-test-logs.png}
+        \includegraphics[width=14cm]{images-git-heroku/jenkins-test-logs.png}
         \caption{Jenkins Logs after Testing automated deployment to Heroku}
 \end{figure}
 
@@ -1154,6 +1158,16 @@ The repository of the project is available on \url{https://github.com/ioanzicu/g
 \end{figure}
 
 
+~\newpage
+
+\section{Problems meet during the project}
+
+
+During this project, we have met many obstacles. In the beginning, we had the intention to use Microsoft Azure PaaS Service to deploy Jenkins on it, but at the time when we tried, the Microsoft Azure service experienced troubles with Jenkins integration. For this reason, we moved to the AWS IaaS Services. After running the EC2 instance, and installing the Jenkins, there were problems with the installation of the Jenkins plugins. The problem was related to the HTTP 500 response from the Jenkins repositories. After a day, the problem was solved and we were able to install all the plugins. 
+
+In the rest of the project, we read the documentation and used Google in order to find solutions related to the integration of the Jenkins with GitHub, setup of the Jenkins Jobs, setup of the Jenkins Email notification, and the last, configuring the integration of Jenkins with Heroku.
+
+
 \section{Conclusions}
 
 Jenkins is a powerful open-source tool that allows CI/CD integration for better and faster software development life-cycle. It has a variety of plugins and many ways to customize the build environment. Jenkins jobs can be easily configured and triggered by specific events. 
@@ -1165,6 +1179,7 @@ In case if build fails, then developers receive feedback about the causes. By do
 
 
 
+~\newpage
 
 \begin{thebibliography}{100}
 
@@ -1195,6 +1210,9 @@ In case if build fails, then developers receive feedback about the causes. By do
 
 % Email Build Notification
 	\bibitem{} \url{https://medium.com/@arun.dev/get-email-notification-for-jenkins-build-failure-and-success-d59154dc639a}
+
+% Heroku
+	\bibitem{} \url{https://www.heroku.com/about}
 
 \end{thebibliography}
 
