@@ -150,12 +150,13 @@ The Jenkins is written in Java and it was released in 2011 by the Kohsuke Kawagu
 Jenkins is a server-based system that runs in servlet containers such as Apache Tomcat. Jenkins allows Continuous Integration and Continuous Delivery of project, regardless of the platform, and can handle any kind of build or Continuous Integration. Using the variety of the available plugins, Jenkins can be integrated with many testing and deployment technologies.
 
 
-The Jenkins usually will be installed on a server where the central build will take place. The following figure describe the simple Jenkins workflow.
+The Jenkins usually will be installed on a server where the central build will take place. The Figure \ref{fig:jenkinsFlow} describe the simple Jenkins workflow.
 
 \begin{figure}[H]
     \centering
         \includegraphics[width=4cm]{images-aws/jenkins_flowchart.png}
         \caption{Jenkins Flowchart \cite{JENKINS-FLOWCHART}}
+        \label{fig:jenkinsFlow}
 \end{figure}
 
 
@@ -215,7 +216,7 @@ The other features of GitHub are:
 \subsection{Create a Security Group for Amazon EC2 Instance}
 
 
-We will create a security group and add the following rules:
+We will create a security group and add the rules:
 \begin{itemize}
 	\item Allow inbound HTTP access from anywhere
 	\item Allow inbound SSH traffic from a specific computer's public IP address in order to connect to the instance
@@ -436,7 +437,7 @@ sudo yum install java-1.8.0-openjdk
 \end{figure}
 
 
-3. We add Jenkins repository using the following command:
+3. We add Jenkins repository using the command:
 
 
 \begin{verbatim}
@@ -616,7 +617,7 @@ We want to setup the \textbf{Source Code Repository} to have access to the proje
 At this moment, we receive error because we haven't installed \textbf{Git} on our  Amazon Linux EC2 Instance.
 
 
-In the bash shell that is connected to the EC2 instance to install \textbf{git} we enter the following command:
+In the bash shell that is connected to the EC2 instance to install \textbf{git} we enter the command:
 
 
 \begin{verbatim}
@@ -1056,7 +1057,7 @@ In this subsection, we will set up the Heroku PaaS service for deploying our app
 \textbf{Heroku} is a container-based cloud Platform as a Service (PaaS). It allows developers to deploy, manage, and scale modern applications. Heroku platform is flexible and easy to use. Heroku supports many programming languages like Java, Node.js, Scala, Clojure, Ruby, Python, PHP, and Go. Heroku was founded in 2007, it is owned at the moment by Salesforce.com and it runs on top of AWS IaaS Service.
 
 
-First, we need to generate an SSH private/public key with the following commands:
+First, we need to generate an SSH private/public key with the commands:
 
 \begin{itemize}
 
@@ -1129,15 +1130,18 @@ Now, we have to create the application on Heroku PaaS Service. The process is ea
 \end{figure}
 
 
-In the following Figure, you can see the logs we have obtained after testing the automated deployment of the application to the Heroku server. After the unit tests have passed, the post-build action started and using the provided credentials with our SSH key, Jenkins pushes the GitHub to commit to Heroku, and because during the testing process, we encountered many errors, the build is still unstable and the email list that we have provided is notified about this new push.
+In the Figure \ref{fig:jenkinsLogs}, you can see the logs we have obtained after testing the automated deployment of the application to the Heroku server. After the unit tests have passed, the post-build action started and using the provided credentials with our SSH key, Jenkins pushes the GitHub to commit to Heroku, and because during the testing process, we encountered many errors, the build is still unstable and the email list that we have provided is notified about this new push.
 
 
 \begin{figure}[H]
     \centering
         \includegraphics[width=14cm]{images-git-heroku/jenkins-test-logs.png}
         \caption{Jenkins Logs after Testing automated deployment to Heroku}
+        \label{fig:jenkinsLogs}
 \end{figure}
 
+
+In the Figure \ref{fig:jenkinsLogs}
 
 Here we can see the application overview on Heroku after our testing push. Note that the green color message \textbf{Build succeeded} proof that the application was successfully built and deployed. 
 
